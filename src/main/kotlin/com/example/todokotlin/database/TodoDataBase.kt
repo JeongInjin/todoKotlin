@@ -9,5 +9,5 @@ data class TodoDataBase(
         this.index = 0
         this.todoList = mutableListOf()
         println("[DEBUG] todo database init")
-    }
+    } 
 }
