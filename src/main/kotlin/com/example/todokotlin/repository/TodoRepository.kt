@@ -8,6 +8,6 @@ interface TodoRepository {
 
     fun delete(index: Int): Boolean
 
-    fun findOne(index: Int): Todo?
+    fun findOne(index: Int?): Todo?
     fun findAll(): MutableList<Todo>
 }

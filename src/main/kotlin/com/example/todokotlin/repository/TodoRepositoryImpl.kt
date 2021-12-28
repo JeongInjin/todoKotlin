@@ -2,7 +2,6 @@ package com.example.todokotlin.repository
 
 import com.example.todokotlin.database.Todo
 import com.example.todokotlin.database.TodoDataBase
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.lang.Exception
 import java.time.LocalDateTime
@@ -66,7 +65,7 @@ class TodoRepositoryImpl(val todoDataBase: TodoDataBase) : TodoRepository {
         }
     }
 
-    override fun findOne(index: Int): Todo? {
+    override fun findOne(index: Int?): Todo? {
         println("findOne : ${index}")
         return todoDataBase.todoList.first { it.index == index }
     }

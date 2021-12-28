@@ -1,7 +1,9 @@
 package com.example.todokotlin.database
 
+import com.example.todokotlin.model.http.TodoDto
 import jdk.jfr.Description
 import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 data class Todo(
     @Description("일정 index")
@@ -16,5 +18,15 @@ data class Todo(
     var createdAt: LocalDateTime? = null,
     @Description("업데이트시간")
     var updatedAt: LocalDateTime? = null,
-) {
+)
+
+fun Todo.convertTodo(todoDto: TodoDto): Todo{
+    return Todo().apply {
+        this.index = todoDto.index
+        this.title = todoDto.title
+        this.description = todoDto.description
+        this.schedule = LocalDateTime.parse(todoDto.schedule, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
+        this.createdAt = LocalDateTime.parse(todoDto.createdAt, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
+        this.updatedAt = LocalDateTime.parse(todoDto.updatedAt, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
+    }
 }

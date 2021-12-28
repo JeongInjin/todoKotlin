@@ -1,8 +1,10 @@
 package com.example.todokotlin.model.http
 
 import annotation.StringFormatDateTime
+import com.example.todokotlin.database.Todo
 import org.springframework.lang.Nullable
 import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import javax.validation.constraints.AssertTrue
 import javax.validation.constraints.NotBlank
 import javax.validation.constraints.Null
@@ -26,3 +28,14 @@ data class TodoDto(
     @field: StringFormatDateTime
     var updatedAt: String? = null,
 )
+
+fun TodoDto.convertTodoDto(todo: Todo): TodoDto {
+    return TodoDto().apply {
+        this.index = todo.index
+        this.title = todo.title
+        this.description = todo.description
+        this.schedule = todo.schedule?.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
+        this.createdAt = todo.createdAt?.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
+        this.updatedAt = todo.updatedAt?.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
+    }
+}
