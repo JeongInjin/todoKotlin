@@ -2,12 +2,8 @@ package com.example.todokotlin.model.http
 
 import annotation.StringFormatDateTime
 import com.example.todokotlin.database.Todo
-import org.springframework.lang.Nullable
-import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import javax.validation.constraints.AssertTrue
 import javax.validation.constraints.NotBlank
-import javax.validation.constraints.Null
 
 data class TodoDto(
 

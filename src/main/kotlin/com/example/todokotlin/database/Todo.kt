@@ -26,7 +26,18 @@ fun Todo.convertTodo(todoDto: TodoDto): Todo{
         this.title = todoDto.title
         this.description = todoDto.description
         this.schedule = LocalDateTime.parse(todoDto.schedule, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
-        this.createdAt = LocalDateTime.parse(todoDto.createdAt, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
-        this.updatedAt = LocalDateTime.parse(todoDto.updatedAt, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
+
+        todoDto.createdAt?.let {
+            this.createdAt = LocalDateTime.parse(todoDto.createdAt, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
+        }?: kotlin.run {
+            this.createdAt = LocalDateTime.now()
+        }
+
+        todoDto.updatedAt?.let {
+            this.updatedAt = LocalDateTime.parse(todoDto.updatedAt, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
+        }?: kotlin.run {
+            this.updatedAt = LocalDateTime.now()
+        }
+
     }
 }
