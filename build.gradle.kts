@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id("org.springframework.boot") version "2.6.2"
+    id("org.springframework.boot") version "2.5.7"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
     kotlin("jvm") version "1.6.10"
     kotlin("plugin.spring") version "1.6.10"
@@ -22,9 +22,9 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
-    // https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui
-    implementation("io.springfox:springfox-swagger-ui:3.0.0")
-
+    //swagger-ui
+    // implementation group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
+    implementation ("io.springfox:springfox-boot-starter:3.0.0")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
